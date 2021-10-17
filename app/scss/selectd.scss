@@ -1,0 +1,175 @@
+/**
+ * ==========================================================================
+ * Main StyleSheet
+ * ==========================================================================
+ */
+
+
+
+/**
+ * Colors
+ * ==========================================================================
+ */
+
+$color__black: #000000;
+$color__white: #FFFFFF;
+
+
+
+/**
+ * Fonts
+ * ==========================================================================
+ */
+
+$font__main: sans-serif;
+
+
+
+/**
+ * Functions
+ * ==========================================================================
+ */
+
+@function background_url($image) {
+    @return url("../img/"+ $image);
+}
+
+
+
+/**
+ * Base
+ * ==========================================================================
+ */
+
+* {
+    outline: none !important;
+}
+
+
+
+/**
+ * Custom Select
+ * ==========================================================================
+ */
+
+.selectd {
+    position: relative;
+
+    select {
+        max-width: 0 !important;
+        max-height: 0 !important;
+        position: absolute !important;
+        left: 0 !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: 0 !important;
+        // visibility: hidden !important;
+    }
+
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    .selectd-container {
+        padding: 8px 32px 8px 16px;
+        background-color: $color__white;
+        border: 1px solid $color__black;
+        border-radius: 5px;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: $color__black transparent transparent transparent;
+        }
+
+        &--active {
+            &::after {
+                border-color: transparent transparent $color__black transparent;
+                top: 7px;
+            }
+        }
+    }
+
+    .selectd-items {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        color: $color__black;
+        margin-top: 5px;
+        background-color: $color__white;
+        border: 1px solid $color__black;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 99;
+        animation: selectdFadeIn .3s ease;
+        animation-fill-mode: both;
+
+        &--hide {
+            visibility: hidden;
+            animation: selectdFadeOut .3s ease;
+            animation-fill-mode: both;
+        }
+
+        &__item {
+            padding: 8px 16px;
+
+            &:hover,
+            &--active {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            &--disabled {
+                opacity: 0.5;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+
+            &--hidden {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+/**
+ * Animations
+ * ==========================================================================
+ */
+
+@keyframes selectdFadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes selectdFadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

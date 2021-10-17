@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>selectd</title>
+
+    <link rel="stylesheet" href="dist/css/selectd.css">
+</head>
+<body>
+    <form action="index.html" method="get">
+        <div class="selectd">
+            <select name="example-1" id="example-1">
+                <option value="">Select car:</option>
+                <option value="audi">Audi</option>
+                <option value="ferrari">Ferrari</option>
+                <option value="ford">Ford</option>
+                <option value="mercedes">Mercedes</option>
+            </select>
+        </div>
+        <div class="selectd">
+            <select name="example-2" id="example-2" required multiple>
+                <option value="">Select car:</option>
+                <option value="audi" hidden>Audi</option>
+                <option value="ferrari">Ferrari</option>
+                <option value="mercedes" disabled>Mercedes</option>
+                <option value="ford">Ford</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script type="text/javascript" src="dist/js/selectd.min.js"></script>
+    <script>
+        new Selectd();
+    </script>
+</body>
+</html>
